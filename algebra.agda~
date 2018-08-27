@@ -1,0 +1,15 @@
+
+record Group {ℓ} : Set (lsuc ℓ) where
+
+  field
+    carrier : Set ℓ
+
+  open import is-algebra {ℓ} {carrier}
+
+  field
+    e : carrier
+    _⁻¹ : Op₁ carrier
+    _·_ : Op₂ carrier
+    isGroup : IsGroup e _⁻¹ _·_
+
+  open IsGroup isGroup public

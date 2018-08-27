@@ -1,0 +1,28 @@
+module relation {ℓ}{A : Set ℓ} where
+
+Op₁ : Set ℓ -> Set ℓ
+Op₁ A = A -> A
+
+Op₂ : Set ℓ -> Set ℓ
+Op₂ A = A -> A -> A
+
+Associative : Op₂ A -> Set _
+Associative _·_ = ∀ (a b c : A) -> (a · b) · c ≡ a · (b · c)
+
+Identityₗ : ∀ {_·_ : Op₂ A} A -> Set _
+Identityₗ {_·_} e = ∀ (a : A) -> e · a ≡ a
+
+Identityᵣ : ∀ {_·_ : Op₂ A} A -> Set _
+Identityᵣ {_·_} e = ∀ (a : A) -> a · e ≡ a
+
+Identity : ∀ {_·_ : Op₂ A} A -> Set _
+Identity {·} e = Identityₗ {·} e × Identityᵣ {·} e 
+
+Inverseₗ : ∀ {e : A}{_·_ : Op₂ A}(_⁻¹ : Op₁ A) -> Set _
+Inverseₗ {e}{_·_} _⁻¹ = ∀ (a : A) -> (a ⁻¹) · a ≡ e
+
+Inverseᵣ : ∀ {e : A}{_·_ : Op₂ A}(_⁻¹ : Op₁ A) -> Set _
+Inverseᵣ {e}{_·_} _⁻¹ = ∀ (a : A) -> a · (a ⁻¹) ≡ e
+
+Inverse : ∀ {e : A}{_·_ : Op₂ A}(_⁻¹ : Op₁ A) -> Set _
+Inverse {e}{·} ⁻¹ = Inverseₗ {e}{·} ⁻¹ × Inverseᵣ {e}{·} ⁻¹
