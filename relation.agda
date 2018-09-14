@@ -2,6 +2,8 @@ module relation {ℓ}{A : Set ℓ} where
 
 open import eq
 open import Data.Product
+open import Agda.Builtin.Equality
+open import Relation.Nullary
 
 Op₁ : Set ℓ
 Op₁ = A -> A

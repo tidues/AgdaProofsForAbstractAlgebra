@@ -12,7 +12,11 @@ record IsMonoid {A : Set ℓ} (e : A) (_·_ : Op₂ {A}) : Set ℓ where
     isSemigroup : IsSemigroup _·_
     identity : Identity {A} {_·_} e
 
+  open IsSemigroup isSemigroup public
+
 record IsGroup {A : Set ℓ} (e : A)(_⁻¹ : Op₁ {A})(_·_ : Op₂ {A}) : Set ℓ where
   field
     isMonoid : IsMonoid e _·_
     inv : Inverse {A}{e} {_·_} _⁻¹
+
+  open IsMonoid isMonoid public

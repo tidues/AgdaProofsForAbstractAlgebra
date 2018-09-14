@@ -1,0 +1,7 @@
+syn match agdaInfixFunction "\<≡\>"
+syn match agdaFunction "\<_≡_\>"
+syn match agdaConstructor "\<refl\>"
+syn match agdaFunction "\<sym-eq\>"
+syn match agdaFunction "\<IsGroup\>\|\<refl-eq\>"
+syn match agdaFunction "\<IsMonoid\>"
+syn match agdaFunction "\<IsSemigroup\>"
